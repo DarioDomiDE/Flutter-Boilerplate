@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'detailScreen.dart';
 import 'History.dart';
 import 'quizScreen.dart';
 
@@ -35,7 +34,7 @@ class MainScreenState extends State<MainScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     QuizScreen(),
     HistoryScreen(),
-    DetailScreen(),
+    HistoryScreen(),
   ];
 
   void _onItemTapped(int index) {
