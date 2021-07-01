@@ -43,17 +43,15 @@ class QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(children: [
-          Question((index + 1).toString() + ': ' + data[index].question),
-          Row(
-            children: [
-              Answer(data[index].answers[0], 1, answerQuestion),
-              Answer(data[index].answers[1], 2, answerQuestion),
-            ],
-          ),
-        ]),
-      ),
+      body: Column(children: [
+        Question((index + 1).toString() + ': ' + data[index].question),
+        Row(
+          children: [
+            Answer(data[index].answers[0], 1, answerQuestion),
+            Answer(data[index].answers[1], 2, answerQuestion),
+          ],
+        ),
+      ]),
     );
   }
 }

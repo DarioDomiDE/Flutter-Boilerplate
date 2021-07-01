@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'historyItem.dart';
-import 'obj/hashtagData.dart';
-import 'detailScreen.dart';
 import 'obj/product.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -15,6 +13,11 @@ class HistoryScreen extends StatelessWidget {
         children: [
           HistoryItem(product: Product(name: 'Urlaub')),
           HistoryItem(product: Product(name: 'Ferien')),
+          HistoryItem(product: Product(name: 'Festivals')),
+          HistoryItem(product: Product(name: 'Festivals')),
+          HistoryItem(product: Product(name: 'Festivals')),
+          HistoryItem(product: Product(name: 'Festivals')),
+          HistoryItem(product: Product(name: 'Festivals')),
           HistoryItem(product: Product(name: 'Festivals')),
         ],
       ),

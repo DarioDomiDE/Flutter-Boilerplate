@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertest/obj/hashtagData.dart';
 import 'detailScreen.dart';
+import 'obj/photoData.dart';
 import 'obj/product.dart';
 
 class HistoryItem extends StatelessWidget {
@@ -10,16 +11,17 @@ class HistoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var data = new HashtagData("Foto #1", [
-      'indonesiaBagus',
-      'travelparadise',
-      'heisnotlost',
-      'thailandisnice',
-      'ahoitotheworld',
-      '10xdario',
-      'hashtagBuddy',
-      'niceApp',
+    var data = PhotoData('Foto #1', [
+      HashtagData('indonesiaBagus', false),
+      HashtagData('travelparadise', true),
+      HashtagData('heisnotlost', false),
+      HashtagData('thailandisnice', false),
+      HashtagData('ahoitotheworld', true),
+      HashtagData('10xdario', false),
+      HashtagData('hashtagBuddy', true),
+      HashtagData('niceApp', false),
     ]);
+
     void NavigateToDetail() {
       Navigator.push(
         context,

@@ -49,9 +49,7 @@ class MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedPage),
-      ),
+      body: _widgetOptions.elementAt(_selectedPage),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {},
         tooltip: 'Increment',

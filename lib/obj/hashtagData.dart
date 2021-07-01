@@ -1,5 +1,5 @@
 class HashtagData {
-  HashtagData(this.title, this.hashtags);
+  HashtagData(this.title, this.isSelected);
   final String title;
-  final List<String> hashtags;
+  final bool isSelected;
 }
