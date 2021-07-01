@@ -13,8 +13,8 @@ class HistoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var data = PhotoData('Foto #1', [
       HashtagData('indonesiaBagus', false),
-      HashtagData('travelparadise', true),
-      HashtagData('heisnotlost', false),
+      HashtagData('travelparadise', false),
+      HashtagData('heisnotlost', true),
       HashtagData('thailandisnice', false),
       HashtagData('ahoitotheworld', true),
       HashtagData('10xdario', false),

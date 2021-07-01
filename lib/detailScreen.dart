@@ -65,8 +65,8 @@ class DetailScreen extends StatelessWidget {
                                     begin: Alignment.topRight,
                                     end: Alignment.bottomLeft,
                                     colors: [
-                                      Color.fromRGBO(255, 140, 100, 1),
-                                      Color.fromRGBO(255, 80, 112, 1),
+                                      Color(0xFFFF8C64),
+                                      Color(0xFFFF5070),
                                     ],
                                   )
                                 : null,
