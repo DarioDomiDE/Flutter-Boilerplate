@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertest/models/hashtagData.dart';
 import 'detailScreen.dart';
-import 'models/photoData.dart';
-import 'models/product.dart';
+import '../../models/photoData.dart';
+import '../../models/product.dart';
 
 class HistoryItem extends StatelessWidget {
   HistoryItem({required this.product}) : super(key: ObjectKey(product));

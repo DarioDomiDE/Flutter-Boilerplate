@@ -2,12 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'answerButton.dart';
-import 'models/questionData.dart';
+import '../../di/service_locator.dart';
+import '../../models/questionData.dart';
 import 'question.dart';
 import 'package:fluttertest/data/repository.dart';
-import 'data/apis/post_api.dart';
-import 'data/clients/rest_client.dart';
-import 'models/post_list.dart';
+import '../../models/post_list.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({Key? key}) : super(key: key);
@@ -17,7 +16,7 @@ class QuizScreen extends StatefulWidget {
 
 class QuizScreenState extends State<QuizScreen> {
   // ToDo store globally, in a store of as Singleton somewhere?
-  PostList posts = PostList(posts: []);
+  Posts posts = Posts(posts: []);
   @override
   void initState() {
     super.initState();
@@ -29,9 +28,7 @@ class QuizScreenState extends State<QuizScreen> {
     // var jsonData = JsonDecoder().convert(response.body);
     // posts = PostList.fromJson(jsonData);
 
-    var client = RestClient();
-    var postApi = PostApi(client);
-    var respository = Repository(postApi);
+    var respository = getIt<Repository>();
     posts = await respository.getPosts();
   }
 

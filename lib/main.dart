@@ -1,98 +1,27 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'history.dart';
-import 'videoScreen.dart';
-import 'quizScreen.dart';
+import 'package:flutter/services.dart';
+import 'di/service_locator.dart';
+import 'ui/my_app.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setPreferredOrientations();
+  await setupLocator();
+  return runZonedGuarded(() async {
+    runApp(MyApp());
+  }, (error, stack) {
+    print(stack);
+    print(error);
+  });
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Hashtag Buddy',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MainScreen(title: 'Dario\'s App'),
-    );
-  }
-}
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key, required this.title}) : super(key: key);
-  final String title;
-  @override
-  MainScreenState createState() => MainScreenState();
-}
-
-class MainScreenState extends State<MainScreen> {
-  int _selectedPage = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget?> _widgetOptions = <Widget?>[
-    QuizScreen(),
-    HistoryScreen(),
-    null
-  ];
-
-  YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: 'KxQIcxlMudw',
-    flags: YoutubePlayerFlags(
-      autoPlay: false,
-      mute: false,
-      captionLanguage: 'de',
-    ),
-  );
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedPage = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return YoutubePlayerBuilder(
-      player: YoutubePlayer(
-        controller: _controller,
-      ),
-      builder: (context, player) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(widget.title),
-          ),
-          body: _selectedPage != 2
-              ? _widgetOptions.elementAt(_selectedPage)
-              : VideoScreen(player: player),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => {},
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Quiz',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.business),
-                label: 'History',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.school),
-                label: 'Detail',
-              ),
-            ],
-            currentIndex: _selectedPage,
-            selectedItemColor: Colors.amber[800],
-            onTap: _onItemTapped,
-          ),
-        );
-      },
-    );
-  }
+Future<void> setPreferredOrientations() {
+  return SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]);
 }

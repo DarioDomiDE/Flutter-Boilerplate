@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:fluttertest/data/exceptions/network_exceptions.dart';
+import 'package:fluttertest/data/network/network_exceptions.dart';
 import 'package:http/http.dart' as http;
 
 class RestClient {

@@ -1,14 +1,14 @@
 import '../post/../models/post.dart';
 
-class PostList {
+class Posts {
   final List<Post>? posts;
 
-  PostList({
+  Posts({
     this.posts,
   });
 
-  factory PostList.fromJson(List<dynamic> json) {
-    return PostList(
+  factory Posts.fromJson(List<dynamic> json) {
+    return Posts(
       posts: json.map((post) => Post.fromMap(post)).toList(),
     );
   }

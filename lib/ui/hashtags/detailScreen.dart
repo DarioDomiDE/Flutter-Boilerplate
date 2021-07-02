@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'models/photoData.dart';
+import '../../models/photoData.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key, required this.data}) : super(key: key);
