@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertest/di/service_locator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'hashtags/historyScreen.dart';
 import 'video/videoScreen.dart';
@@ -31,17 +32,29 @@ class MainScreenState extends State<MainScreen> {
   static const List<Widget?> _widgetOptions = <Widget?>[
     QuizScreen(),
     HistoryScreen(),
-    null
+    VideoScreen(),
   ];
 
-  YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: 'KxQIcxlMudw',
-    flags: YoutubePlayerFlags(
-      autoPlay: false,
-      mute: false,
-      captionLanguage: 'de',
-    ),
-  );
+  late YoutubePlayer player;
+  // YoutubePlayer player = YoutubePlayer(
+  //     controller: YoutubePlayerController(
+  //   initialVideoId: 'KxQIcxlMudw',
+  //   flags: YoutubePlayerFlags(
+  //     autoPlay: false,
+  //     mute: false,
+  //     captionLanguage: 'de',
+  //   ),
+  // ));
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  Future<void> loadData() async {
+    player = getIt<YoutubePlayer>();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -52,17 +65,13 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return YoutubePlayerBuilder(
-      player: YoutubePlayer(
-        controller: _controller,
-      ),
+      player: player,
       builder: (context, player) {
         return Scaffold(
           appBar: AppBar(
             title: Text(widget.title),
           ),
-          body: _selectedPage != 2
-              ? _widgetOptions.elementAt(_selectedPage)
-              : VideoScreen(player: player),
+          body: _widgetOptions.elementAt(_selectedPage),
           floatingActionButton: FloatingActionButton(
             onPressed: () => {},
             tooltip: 'Increment',

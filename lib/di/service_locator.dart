@@ -1,4 +1,6 @@
 // import '../data/local/datasources/post/post_datasource.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
 import '../data/network/apis/post_api.dart';
 import '../data/network/rest_client.dart';
 import '../data/repository.dart';
@@ -32,6 +34,16 @@ Future<void> setupLocator() async {
   // getIt.registerSingleton<Dio>(NetworkModule.provideDio(getIt<SharedPreferenceHelper>()));
   // getIt.registerSingleton(DioClient(getIt<Dio>()));
   getIt.registerSingleton(RestClient());
+
+  getIt.registerSingleton(YoutubePlayer(
+      controller: YoutubePlayerController(
+    initialVideoId: 'KxQIcxlMudw',
+    flags: YoutubePlayerFlags(
+      autoPlay: false,
+      mute: false,
+      captionLanguage: 'de',
+    ),
+  )));
 
   // api's:---------------------------------------------------------------------
   getIt.registerSingleton(PostApi(getIt<RestClient>()));

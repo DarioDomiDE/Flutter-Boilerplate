@@ -17,6 +17,7 @@ class QuizScreen extends StatefulWidget {
 class QuizScreenState extends State<QuizScreen> {
   // ToDo store globally, in a store of as Singleton somewhere?
   Posts posts = Posts(posts: []);
+
   @override
   void initState() {
     super.initState();
