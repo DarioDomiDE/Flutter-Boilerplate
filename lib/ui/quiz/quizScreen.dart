@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertest/utils/app_localization.dart';
 import 'answerButton.dart';
 import '../../di/service_locator.dart';
 import '../../models/questionData.dart';
@@ -67,6 +68,7 @@ class QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: [
+        Text(AppLocalizations.of(context).translate('home_start')),
         Question((index + 1).toString() + ': ' + data[index].question),
         Row(
           children: [

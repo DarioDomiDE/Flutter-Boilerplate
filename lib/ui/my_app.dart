@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttertest/di/service_locator.dart';
+import 'package:fluttertest/utils/app_localization.dart';
+import 'package:fluttertest/utils/routes.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'hashtags/historyScreen.dart';
 import 'video/videoScreen.dart';
 import 'quiz/quizScreen.dart';
+import 'package:fluttertest/stores/language_store.dart';
 
 class MyApp extends StatelessWidget {
+  final LanguageStore _languageStore = getIt<LanguageStore>();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,6 +19,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      routes: Routes.routes,
+      locale: Locale(_languageStore.locale),
+      localizationsDelegates: [
+        // A class which loads the translations from JSON files
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: _languageStore.supportedLanguages
+          .map((language) => Locale(language.locale!, language.code))
+          .toList(),
       home: MainScreen(title: 'Dario\'s App'),
     );
   }

@@ -1,4 +1,5 @@
 // import '../data/local/datasources/post/post_datasource.dart';
+import 'package:fluttertest/stores/language_store.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../data/network/apis/post_api.dart';
@@ -35,16 +36,6 @@ Future<void> setupLocator() async {
   // getIt.registerSingleton(DioClient(getIt<Dio>()));
   getIt.registerSingleton(RestClient());
 
-  getIt.registerSingleton(YoutubePlayer(
-      controller: YoutubePlayerController(
-    initialVideoId: 'KxQIcxlMudw',
-    flags: YoutubePlayerFlags(
-      autoPlay: false,
-      mute: false,
-      captionLanguage: 'de',
-    ),
-  )));
-
   // api's:---------------------------------------------------------------------
   getIt.registerSingleton(PostApi(getIt<RestClient>()));
 
@@ -58,8 +49,18 @@ Future<void> setupLocator() async {
     // getIt<PostDataSource>(),
   ));
 
+  getIt.registerSingleton(YoutubePlayer(
+      controller: YoutubePlayerController(
+    initialVideoId: 'KxQIcxlMudw',
+    flags: YoutubePlayerFlags(
+      autoPlay: false,
+      mute: false,
+      captionLanguage: 'de',
+    ),
+  )));
+
   // stores:--------------------------------------------------------------------
-  // getIt.registerSingleton(LanguageStore(getIt<Repository>()));
+  getIt.registerSingleton(LanguageStore(getIt<Repository>()));
   // getIt.registerSingleton(PostStore(getIt<Repository>()));
   // getIt.registerSingleton(ThemeStore(getIt<Repository>()));
   // getIt.registerSingleton(UserStore(getIt<Repository>()));

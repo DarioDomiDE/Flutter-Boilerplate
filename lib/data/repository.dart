@@ -13,4 +13,10 @@ class Repository {
       return postsList;
     }).catchError((error) => throw error);
   }
+
+  // Language: -----------------------------------------------------------------
+  // Future<void> changeLanguage(String value) =>
+  //     _sharedPrefsHelper.changeLanguage(value);
+
+  // String? get currentLanguage => _sharedPrefsHelper.currentLanguage;
 }

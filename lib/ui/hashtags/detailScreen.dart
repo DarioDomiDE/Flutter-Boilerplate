@@ -15,7 +15,7 @@ class DetailScreen extends StatelessWidget {
       ),
       body: Column(children: [
         Image(
-          image: AssetImage('assets/image1.png'),
+          image: AssetImage('assets/images/image1.png'),
           fit: BoxFit.cover,
           height: 150,
           width: MediaQuery.of(context).size.width,

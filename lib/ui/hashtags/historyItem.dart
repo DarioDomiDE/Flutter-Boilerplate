@@ -35,7 +35,7 @@ class HistoryItem extends StatelessWidget {
         child: Row(
           children: [
             Image(
-              image: AssetImage('assets/image1.png'),
+              image: AssetImage('assets/images/image1.png'),
               fit: BoxFit.contain,
               width: 100,
             ),

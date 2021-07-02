@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import '../../../models/post_list.dart';
-import '../endpoints.dart';
+import '../../../constants/endpoints.dart';
 import '../network_exceptions.dart';
 import '../rest_client.dart';
 
