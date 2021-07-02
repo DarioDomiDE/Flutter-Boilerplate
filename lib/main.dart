@@ -9,7 +9,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,12 +38,6 @@ class MainScreenState extends State<MainScreen> {
     null
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedPage = index;
-    });
-  }
-
   YoutubePlayerController _controller = YoutubePlayerController(
     initialVideoId: 'KxQIcxlMudw',
     flags: YoutubePlayerFlags(
@@ -53,6 +46,12 @@ class MainScreenState extends State<MainScreen> {
       captionLanguage: 'de',
     ),
   );
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedPage = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

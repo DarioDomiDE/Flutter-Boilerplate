@@ -1,7 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'answerButton.dart';
-import 'obj/questionData.dart';
+import 'models/questionData.dart';
 import 'question.dart';
+import 'package:fluttertest/data/repository.dart';
+import 'data/apis/post_api.dart';
+import 'data/clients/rest_client.dart';
+import 'models/post_list.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({Key? key}) : super(key: key);
@@ -10,6 +16,25 @@ class QuizScreen extends StatefulWidget {
 }
 
 class QuizScreenState extends State<QuizScreen> {
+  // ToDo store globally, in a store of as Singleton somewhere?
+  PostList posts = PostList(posts: []);
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  Future<void> loadData() async {
+    // var response = await http.get(Uri.parse(Endpoints.getPosts));
+    // var jsonData = JsonDecoder().convert(response.body);
+    // posts = PostList.fromJson(jsonData);
+
+    var client = RestClient();
+    var postApi = PostApi(client);
+    var respository = Repository(postApi);
+    posts = await respository.getPosts();
+  }
+
   static const data = [
     QuestionData(
       'Whats your fav. color?',
@@ -51,6 +76,7 @@ class QuizScreenState extends State<QuizScreen> {
             Answer(data[index].answers[1], 2, answerQuestion),
           ],
         ),
+        ...posts.posts!.map((post) => Text(post.title ?? ''))
       ]),
     );
   }

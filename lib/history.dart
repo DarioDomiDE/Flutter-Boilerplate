@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'historyItem.dart';
-import 'obj/product.dart';
+import 'models/product.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({Key? key}) : super(key: key);
